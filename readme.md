@@ -96,6 +96,56 @@ retriever.initialize()
 response = await retriever.process_query("¿Cuál es el contenido principal?")
 ```
 
+## Estructura de Directorios
+
+```
+doc-processor/
+├── documents/           # Carpeta para documentos PDF fuente
+├── vector_db/          # Carpeta donde se almacena la DB vectorial
+├── DB/                 # Módulo de base de datos
+├── Assistant/          # Módulo del asistente
+├── Retriever/         # Módulo de recuperación
+└── main.py            # Script principal
+```
+
+## Configuración de Documentos y Base de Datos
+
+### Documentos Fuente
+1. Coloca tus documentos PDF en la carpeta `documents/`:
+   ```bash
+   doc-processor/
+   └── documents/
+       ├── documento1.pdf
+       ├── documento2.pdf
+       └── documento3.pdf
+   ```
+
+### Base de Datos Vectorial
+1. La base de datos vectorial se generará automáticamente en la carpeta `vector_db/`:
+   ```bash
+   doc-processor/
+   └── vector_db/
+       ├── chroma.sqlite3
+       └── index/
+   ```
+
+2. Puedes modificar estas rutas en el archivo de configuración o al crear una instancia de `DBConfig`:
+   ```python
+   config = DBConfig(
+       source_data_folder=Path("./custom_documents"),
+       path_db=Path("./custom_vector_db"),
+       # ... otros parámetros
+   )
+   ```
+
+### Recarga de la Base de Datos
+- Para recargar la base de datos con nuevos documentos:
+  1. Añade o modifica los PDFs en la carpeta `documents/`
+  2. Usa el comando `recargar` en la interfaz del asistente
+  3. O reinicia la aplicación
+
+**Nota**: La primera vez que ejecutes la aplicación, la base de datos vectorial se creará automáticamente. Este proceso puede tomar algunos minutos dependiendo del tamaño y número de documentos.
+
 ## Uso del Sistema
 
 ### Ejecutar el Asistente
