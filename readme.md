@@ -1,6 +1,6 @@
 # Document Processing and Vector Database Assistant
 
-Una aplicación de Python que combina procesamiento de documentos PDF con un asistente interactivo basado en RAG (Retrieval-Augmented Generation). La aplicación permite cargar documentos, procesarlos en una base de datos vectorial y realizar consultas inteligentes mediante un modelo de lenguaje.
+Una aplicación de Python que combina procesamiento de documentos PDF con un asistente interactivo basado en RAG (Retrieval-Augmented Generation). La aplicación permite cargar documentos, procesarlos en una base de datos vectorial y realizar consultas inteligentes mediante un modelo de lenguaje (por defecto gemini-1.5-pro).
 
 ## Características
 
@@ -25,8 +25,8 @@ Una aplicación de Python que combina procesamiento de documentos PDF con un asi
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/yourusername/doc-processor.git
-cd doc-processor
+git clone https://github.com/segave/RAG_V2.git
+cd RAG_V2
 ```
 
 2. Instala las dependencias:
@@ -99,9 +99,8 @@ response = await retriever.process_query("¿Cuál es el contenido principal?")
 ## Estructura de Directorios
 
 ```
-doc-processor/
-├── documents/           # Carpeta para documentos PDF fuente
-├── vector_db/          # Carpeta donde se almacena la DB vectorial
+RAG_V2/
+├── DOCS/           # Carpeta para documentos PDF fuente y DB vectorial
 ├── DB/                 # Módulo de base de datos
 ├── Assistant/          # Módulo del asistente
 ├── Retriever/         # Módulo de recuperación
@@ -113,8 +112,9 @@ doc-processor/
 ### Documentos Fuente
 1. Coloca tus documentos PDF en la carpeta `documents/`:
    ```bash
-   doc-processor/
-   └── documents/
+   RAG_V2/
+   └── DOCS/
+    └── MisDatos/
        ├── documento1.pdf
        ├── documento2.pdf
        └── documento3.pdf
@@ -123,8 +123,9 @@ doc-processor/
 ### Base de Datos Vectorial
 1. La base de datos vectorial se generará automáticamente en la carpeta `vector_db/`:
    ```bash
-   doc-processor/
-   └── vector_db/
+   RAG_V2/
+   └── DOCS/
+    └── vector_db/
        ├── chroma.sqlite3
        └── index/
    ```
@@ -174,10 +175,6 @@ El sistema incluye manejo robusto de errores en múltiples niveles:
 3. Commit tus cambios (`git commit -m 'Add amazing feature'`)
 4. Push a la rama (`git push origin feature/amazing-feature`)
 5. Abre un Pull Request
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
 
 ## Notas de Desarrollo
 
